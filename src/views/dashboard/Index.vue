@@ -62,20 +62,6 @@
       </v-list>
     </v-navigation-drawer>
     <v-content>
-      <!-- <v-container>
-        <v-row justify="center" align="center">
-          <v-col class="shrink">
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn :href="source" icon large target="_blank" v-on="on">
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
-      </v-container>-->
       <vue-page-transition name="fade-in-right">
         <router-view></router-view>
       </vue-page-transition>
@@ -113,9 +99,10 @@ export default {
     drawer: null,
     item: 1,
     items: [
-      { title: "Real-Time", icon: "mdi-clock", link: "/tables" },
-      { title: "Audience", icon: "mdi-account", link: "/profile" },
-      { title: "Conversions", icon: "mdi-flag", link: "/profile" }
+      { title: "User Profile", icon: "perm_identity", link: "/user" },
+      { title: "Tables", icon: "mdi-account", link: "/tables" },
+      { title: "profile", icon: "mdi-flag", link: "/profile" },
+      { title: "Logout", icon: "exit_to_app", link: "" }
     ],
     sideItems: [
       { title: "Profile" },

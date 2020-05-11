@@ -42,6 +42,14 @@ const routes = [
 
       },
       {
+        path: "/user",
+        name: "User",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/dashboard/User"),
+        meta: { transition: 'zoom' }
+
+      },
+      {
         path: "",
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/dashboard/Profile")
