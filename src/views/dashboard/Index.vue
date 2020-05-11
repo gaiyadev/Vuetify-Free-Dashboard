@@ -1,7 +1,7 @@
 <template>
   <v-app id="keep">
     <v-app-bar app clipped-left color="primary" elevation="7" height="75">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer" color="white"></v-app-bar-nav-icon>
       <span class="title ml-3 mr-5 white--text">
         <router-link
           to="/dashboard"
@@ -14,6 +14,7 @@
       <v-text-field
         id="search"
         solo-inverted
+        background-color="white"
         flat
         hide-details
         label="Search"
@@ -21,7 +22,7 @@
       ></v-text-field>
 
       <v-badge color="green" content="6"></v-badge>
-      <v-btn icon dark v-on="on">
+      <v-btn icon dark right>
         <v-icon>add_alert</v-icon>
       </v-btn>
 
@@ -43,7 +44,7 @@
       <!-- <v-spacer></v-spacer> -->
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4" elevation="7">
+    <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4" elevation="11">
       <v-list flat>
         <v-subheader>
           <v-icon color="primary" left>dashboard</v-icon>
@@ -100,7 +101,7 @@ export default {
     item: 1,
     items: [
       { title: "User Profile", icon: "perm_identity", link: "/user" },
-      { title: "Tables", icon: "mdi-account", link: "/tables" },
+      { title: "Tables", icon: "reorder", link: "/tables" },
       { title: "profile", icon: "mdi-flag", link: "/profile" },
       { title: "Logout", icon: "exit_to_app", link: "" }
     ],
@@ -120,5 +121,12 @@ export default {
 }
 #search {
   width: 1px;
+}
+input::label {
+  color: red !important;
+  opacity: 1;
+}
+#search {
+  color: black;
 }
 </style>
