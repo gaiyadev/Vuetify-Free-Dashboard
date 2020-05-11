@@ -71,7 +71,21 @@
           </v-list-item>
         </v-list-item-group>
       </v-list>
-      <v-treeview shaped hoverable activatable :items="Dropitems">items.href</v-treeview>
+      <v-treeview shaped hoverable activatable :items="Dropitems" style="cursor: pointer;">
+        <template slot="label" slot-scope="props">
+          <router-link
+            style="text-decoration: none; color: black;"
+            :to="props.item.href"
+            :icon="props.item.icon"
+            v-if="props.item.href"
+          >
+            <v-icon left>{{ props.item.icon }}</v-icon>
+            {{ props.item.name }}
+          </router-link>
+          <span v-else>{{ props.item.name }}</span>
+        </template>
+      </v-treeview>
+      <!-- <v-treeview style="cursor: pointer;" shaped hoverable activatable :items="Dropitems"></v-treeview> -->
     </v-navigation-drawer>
 
     <v-row>
@@ -126,11 +140,7 @@
 </template>
 
 <script>
-//import BreadCrum from "@/components/BreadCrum";
 export default {
-  // components: {
-  //   BreadCrum
-  // },
   props: {
     source: String
   },
@@ -181,45 +191,48 @@ export default {
     Dropitems: [
       {
         id: 1,
-        name: "Dropdown :",
+        name: "Dropdown Menu",
         children: [
           {
             id: 1,
             name: "Calendar",
-            href: "dashboard"
+            href: "/calender",
+            icon: "favorite"
           },
           {
             id: 2,
             name: "Chrome ",
-            href: "profile"
+            href: "/chrome",
+            icon: "lock"
           },
           {
             id: 3,
             name: "Webstorm",
-            href: "/profile"
+            href: "/webstorm",
+            icon: "schedule"
           }
         ]
       },
       {
-        id: 5,
+        id: 2,
         name: "Documents :",
         children: [
           {
-            id: 6,
+            id: 4,
             name: "vuetify :",
             children: [
               {
-                id: 7,
+                id: 4,
                 name: "src :",
                 children: [
-                  { id: 8, name: "index : ts" },
-                  { id: 9, name: "bootstrap : ts" }
+                  { id: 6, name: "index : ts" },
+                  { id: 7, name: "bootstrap : ts" }
                 ]
               }
             ]
           },
           {
-            id: 10,
+            id: 3,
             name: "material2 :",
             children: [
               {

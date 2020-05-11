@@ -58,6 +58,30 @@ const routes = [
 
       },
       {
+        path: "/chrome",
+        name: "Chrome",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/dashboard/Chrome"),
+        meta: { transition: 'zoom' }
+
+      },
+      {
+        path: "/webstorm",
+        name: "Webstorm",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/dashboard/Webstorm"),
+        meta: { transition: 'zoom' }
+
+      },
+      {
+        path: "/calender",
+        name: "Calender",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/dashboard/Calender"),
+        meta: { transition: 'zoom' }
+
+      },
+      {
         path: "",
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/dashboard/Profile")
