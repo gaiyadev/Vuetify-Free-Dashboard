@@ -21,16 +21,33 @@ const routes = [
   },
   {
     path: "/dashboard",
-    name: "Dashboard",
+    // name: "Dashboard",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard/Index")
+      import(/* webpackChunkName: "about" */ "../views/dashboard/Index"),
+    children: [
+      {
+        path: "/profile",
+        name: "Profile",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/dashboard/Profile"),
+        meta: { transition: 'zoom' }
+
+      },
+      {
+        path: "/tables",
+        name: "Table",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/dashboard/Tables"),
+        meta: { transition: 'zoom' }
+
+      },
+      {
+        path: "",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/dashboard/Profile")
+      },
+    ],
   },
-  {
-    path: "/profile",
-    name: "Profile",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/dashboard/Profile")
-  }
 ];
 
 const router = new VueRouter({

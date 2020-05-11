@@ -1,13 +1,30 @@
 <template>
   <v-app id="keep">
-    <v-app-bar app clipped-left color="primary" elevation="11">
+    <v-app-bar app clipped-left color="primary" elevation="7" height="75">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <span class="title ml-3 mr-5 white--text">
-        Dashboard&nbsp;
+        <router-link
+          to="/dashboard"
+          class="white--text text-uppercase"
+          style="text-decoration: none;"
+        >Dashboard</router-link>&nbsp;
         <!-- <span class="font-weight-light">Keep</span> -->
       </span>
       <v-spacer></v-spacer>
-      <v-text-field solo-inverted flat hide-details label="Search" prepend-inner-icon="search"></v-text-field>
+      <v-text-field
+        id="search"
+        solo-inverted
+        flat
+        hide-details
+        label="Search"
+        prepend-inner-icon="search"
+      ></v-text-field>
+
+      <v-badge color="green" content="6"></v-badge>
+      <v-btn icon dark v-on="on">
+        <v-icon>add_alert</v-icon>
+      </v-btn>
+
       <div class="text-center">
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
@@ -26,32 +43,27 @@
       <!-- <v-spacer></v-spacer> -->
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4">
-      <v-list dense class="grey lighten-4">
-        <template v-for="(item, i) in items">
-          <v-row v-if="item.heading" :key="i" align="center">
-            <v-col cols="6">
-              <v-subheader v-if="item.heading">{{ item.heading }}</v-subheader>
-            </v-col>
-            <v-col cols="6" class="text-right">
-              <v-btn small text>edit</v-btn>
-            </v-col>
-          </v-row>
-          <v-divider v-else-if="item.divider" :key="i" dark class="my-4"></v-divider>
-          <v-list-item v-else :key="i" link>
-            <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-action>
+    <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4" elevation="7">
+      <v-list flat>
+        <v-subheader>
+          <v-icon color="primary" left>dashboard</v-icon>
+          <span class="primary--text pt-1 pb-1 pr-2 pl-2">DASHBOARD</span>
+        </v-subheader>
+        <v-list-item-group v-model="item" color="primary">
+          <v-list-item v-for="item in items" :key="item.title" router :to="item.link">
+            <v-list-item-icon>
+              <v-icon v-text="item.icon"></v-icon>
+            </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title class="grey--text">{{ item.text }}</v-list-item-title>
+              <v-list-item-title v-text="item.title"></v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </template>
+        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
     <v-content>
-      <v-container fluid class="grey lighten-4 fill-height">
-        <!-- <v-row justify="center" align="center">
+      <!-- <v-container>
+        <v-row justify="center" align="center">
           <v-col class="shrink">
             <v-tooltip right>
               <template v-slot:activator="{ on }">
@@ -62,10 +74,33 @@
               <span>Source</span>
             </v-tooltip>
           </v-col>
-        </v-row>-->
+        </v-row>
+      </v-container>-->
+      <vue-page-transition name="fade-in-right">
         <router-view></router-view>
-      </v-container>
+      </vue-page-transition>
     </v-content>
+
+    <v-footer dark padless elevation="7">
+      <v-card class="flex" flat tile>
+        <v-card-title class="primary">
+          <strong class="subheading">Get connected with us on social networks!</strong>
+          <v-spacer></v-spacer>
+
+          <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon>
+            <v-icon size="24px">{{ icon }}</v-icon>
+          </v-btn>
+        </v-card-title>
+
+        <v-card-text class="py-2 white--text text-center">
+          {{ new Date().getFullYear() }} —
+          <strong>
+            Vuetify Dashboard.
+            <span class="primary--text">Design By Gaiya M. Obed</span>
+          </strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
@@ -76,27 +111,18 @@ export default {
   },
   data: () => ({
     drawer: null,
+    item: 1,
     items: [
-      { icon: "dashboard", text: "DASHBOARD" },
-      { icon: "touch_app", text: "Reminders" },
-      { divider: true },
-      { heading: "Labels" },
-      { icon: "add", text: "Create new label" },
-      { divider: true },
-      { icon: "archive", text: "Archive" },
-      { icon: "delete", text: "Trash" },
-      { divider: true },
-      { icon: "settings", text: "Settings" },
-      { icon: "chat_bubble", text: "Trash" },
-      { icon: "help", text: "Help" },
-      { icon: "phonelink", text: "App downloads" },
-      { icon: "keyboard", text: "Keyboard shortcuts" }
+      { title: "Real-Time", icon: "mdi-clock", link: "/tables" },
+      { title: "Audience", icon: "mdi-account", link: "/profile" },
+      { title: "Conversions", icon: "mdi-flag", link: "/profile" }
     ],
     sideItems: [
       { title: "Profile" },
       { title: "Change Password" },
       { title: "Logout" }
-    ]
+    ],
+    icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"]
   })
 };
 </script>
@@ -104,5 +130,8 @@ export default {
 <style>
 #keep .v-navigation-drawer__border {
   display: none;
+}
+#search {
+  width: 1px;
 }
 </style>
