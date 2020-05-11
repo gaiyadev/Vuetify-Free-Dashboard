@@ -50,6 +50,14 @@ const routes = [
 
       },
       {
+        path: "/change_password",
+        name: "ChangePassword",
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/dashboard/ChangePassword"),
+        meta: { transition: 'zoom' }
+
+      },
+      {
         path: "",
         component: () =>
           import(/* webpackChunkName: "about" */ "../views/dashboard/Profile")

@@ -44,7 +44,8 @@
             <!-- <v-btn color="primary" dark v-on="on">Dropdown</v-btn> -->
           </template>
           <v-list>
-            <v-list-item v-for="(item, index) in sideItems" :key="index">
+            <v-list-item v-for="(item) in sideItems" :key="item.name" router :to="item.link">
+              <v-icon left color="primary">{{ item.icon }}</v-icon>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -70,15 +71,7 @@
           </v-list-item>
         </v-list-item-group>
       </v-list>
-      <v-treeview
-        shaped
-        hoverable
-        activatable
-        :items="Dropitems"
-        router
-        open-on-click
-        :to="items.href"
-      ></v-treeview>
+      <v-treeview shaped hoverable activatable :items="Dropitems">items.href</v-treeview>
     </v-navigation-drawer>
 
     <v-row>
@@ -116,7 +109,15 @@
           {{ new Date().getFullYear() }} —
           <strong>
             Vuetify Dashboard.
-            <span class="white--text">Designed By Gaiya M. Obed</span>
+            <span class="white--text">
+              Designed With
+              <v-icon color="white">favorite</v-icon>&nbsp; By
+              <a
+                class="white--text"
+                target="_blank"
+                href="https://gaiyaobed.com.ng"
+              >Gaiya M. Obed</a>
+            </span>
           </strong>
         </v-card-text>
       </v-card>
@@ -143,16 +144,28 @@ export default {
       { title: "Logout", icon: "exit_to_app", link: "" }
     ],
     sideItems: [
-      { title: "Profile" },
-      { title: "Change Password" },
-      { title: "Logout" }
+      {
+        title: "Profile",
+        icon: "lock",
+        link: "/profile"
+      },
+      {
+        title: "Change Password",
+        icon: "fingerprint",
+        link: "/change_password"
+      },
+      {
+        title: "Logout",
+        icon: "settings_power",
+        link: ""
+      }
     ],
     icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
     BreadItems: [
       {
         text: "Dashboard",
         disabled: false,
-        href: "dashbaord"
+        href: "/dashboard"
       },
       {
         text: "Link 1",
@@ -173,12 +186,12 @@ export default {
           {
             id: 1,
             name: "Calendar",
-            link: "profile"
+            href: "dashboard"
           },
           {
             id: 2,
             name: "Chrome ",
-            link: "profile"
+            href: "profile"
           },
           {
             id: 3,
