@@ -1,29 +1,15 @@
 # dashboard
+Is a free and opensource project built using VueJS and VuetifyJs as a starter template for any VueJs application
 
 ## Project setup
+Clone the repo and run npm install or yarn install to install all dependencies
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+yarn install or npm install
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### Technologies
++ VueJs
++ VuetifyJs
 
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### License
+MIT License
