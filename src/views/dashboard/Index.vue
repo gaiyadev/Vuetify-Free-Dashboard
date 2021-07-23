@@ -133,7 +133,7 @@
                 class="white--text"
                 target="_blank"
                 href="https://gaiyaobed.com.ng"
-                >Gaiya M. Obed</a
+                >gaiyadev</a
               >
             </span>
           </strong>
