@@ -1,16 +1,16 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12" md="8">
-        <v-data-table
-          :headers="headers"
-          :items="desserts"
-          :items-per-page="5"
-          class="elevation-7 mt-n12"
-        ></v-data-table>
-      </v-col>
-    </v-row>
-  </v-container>
+  <v-row>
+    <v-col cols="12" md="2" sm="12"></v-col>
+    <v-col cols="12" md="8">
+      <v-data-table
+        :headers="headers"
+        :items="desserts"
+        :items-per-page="5"
+        class="elevation-7 mt-12"
+      ></v-data-table>
+    </v-col>
+    <v-col cols="12" md="2" sm="12"></v-col>
+  </v-row>
 </template>
 
 <script>

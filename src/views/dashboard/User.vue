@@ -1,51 +1,68 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12" md="8">
-        <v-card elevation="7" class="mt-n12">
-          <v-stepper v-model="e1">
-            <v-stepper-header>
-              <v-stepper-step :complete="e1 > 1" step="1">Name of step 1</v-stepper-step>
+  <v-row>
+    <v-col cols="12" md="2" sm="12"></v-col>
 
-              <v-divider></v-divider>
+    <v-col cols="12" md="8">
+      <v-card elevation="7" class="mt-12">
+        <v-stepper v-model="e1">
+          <v-stepper-header>
+            <v-stepper-step :complete="e1 > 1" step="1"
+              >Name of step 1</v-stepper-step
+            >
 
-              <v-stepper-step :complete="e1 > 2" step="2">Name of step 2</v-stepper-step>
+            <v-divider></v-divider>
 
-              <v-divider></v-divider>
+            <v-stepper-step :complete="e1 > 2" step="2"
+              >Name of step 2</v-stepper-step
+            >
 
-              <v-stepper-step step="3">Name of step 3</v-stepper-step>
-            </v-stepper-header>
+            <v-divider></v-divider>
 
-            <v-stepper-items>
-              <v-stepper-content step="1">
-                <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+            <v-stepper-step step="3">Name of step 3</v-stepper-step>
+          </v-stepper-header>
 
-                <v-btn color="primary" @click="e1 = 2">Continue</v-btn>
+          <v-stepper-items>
+            <v-stepper-content step="1">
+              <v-card
+                class="mb-12"
+                color="grey lighten-1"
+                height="200px"
+              ></v-card>
 
-                <v-btn text>Cancel</v-btn>
-              </v-stepper-content>
+              <v-btn color="primary" @click="e1 = 2">Continue</v-btn>
 
-              <v-stepper-content step="2">
-                <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+              <v-btn text>Cancel</v-btn>
+            </v-stepper-content>
 
-                <v-btn color="primary" @click="e1 = 3">Continue</v-btn>
+            <v-stepper-content step="2">
+              <v-card
+                class="mb-12"
+                color="grey lighten-1"
+                height="200px"
+              ></v-card>
 
-                <v-btn text>Cancel</v-btn>
-              </v-stepper-content>
+              <v-btn color="primary" @click="e1 = 3">Continue</v-btn>
 
-              <v-stepper-content step="3">
-                <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+              <v-btn text>Cancel</v-btn>
+            </v-stepper-content>
 
-                <v-btn color="primary" @click="e1 = 1">Continue</v-btn>
+            <v-stepper-content step="3">
+              <v-card
+                class="mb-12"
+                color="grey lighten-1"
+                height="200px"
+              ></v-card>
 
-                <v-btn text>Cancel</v-btn>
-              </v-stepper-content>
-            </v-stepper-items>
-          </v-stepper>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+              <v-btn color="primary" @click="e1 = 1">Continue</v-btn>
+
+              <v-btn text>Cancel</v-btn>
+            </v-stepper-content>
+          </v-stepper-items>
+        </v-stepper>
+      </v-card>
+    </v-col>
+    <v-col cols="12" md="2" sm="12"></v-col>
+  </v-row>
 </template>
 
 <script>
